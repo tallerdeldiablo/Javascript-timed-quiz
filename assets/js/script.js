@@ -1,6 +1,8 @@
 var startEL = document.querySelector("#start");
-
 var cardContentsEL = document.querySelector("#card-contents");
+var questionEL = document.querySelector("#question");
+
+
 var question1EL = document.querySelector("#question1");
 var question2EL = document.querySelector("#question2");
 var question3EL = document.querySelector("#question3");
@@ -11,7 +13,7 @@ var count = 0;
 
 const questions = [
   { 
-  question1: "What is Javascript?",
+  question: "What is Javascript?",
   choice1: "A programming language",
   choice2: " a style sheet language ",
   choice3:"HyperText markup language",
@@ -64,23 +66,23 @@ cardContentsEL.addEventListener("click", function(e) {
 
 function createQuestion(indexQ) {
   
+//Question # indexQ that is iqual to count --line start-eventlistener
+countEl.textContent = indexQ;
   for (var i = 0; i < 3; i++) {
-
-
+    questionEL.textContent = questions[0].question;
     let buttonA = document.createElement("button");
     buttonA.setAttribute("class", "btnQuestion"); 
     buttonA.textContent = "questions creted in for";
     cardContentsEL.appendChild(buttonA);
- 
     }
+
 }
 
-
+//First listener
 startEL.addEventListener("click", function(e) {
   element=e.target;
   element.remove();
-
+  count++;
   startimer();
-  createQuestion();
- 
+  createQuestion(count);
 });
