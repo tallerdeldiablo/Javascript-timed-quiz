@@ -1,4 +1,6 @@
 var startEL = document.querySelector("#start");
+
+var cardContentsEL = document.querySelector("#card-contents");
 var question1EL = document.querySelector("#question1");
 var question2EL = document.querySelector("#question2");
 var question3EL = document.querySelector("#question3");
@@ -16,9 +18,13 @@ const questions = [
   answer: "A programming language"
 }, { 
   question2: "Inside which HTML element do we put the JavaScript?",
-  choice1: " script ",  choice2: "js",  choice3:"javascript",
-  answer: 1
-}, { question3: "What does Javascript do?",   choice1: "Create Structure", choice2: "Stilize the web", choice3:"Increase interactivity",
+  choice1: ["script", "js","javascript"],
+    answer: "script"
+},
+ { question3: "What does Javascript do?",  
+  choice1: "Create Structure", 
+  choice2: "Stilize the web",
+   choice3:"Increase interactivity",
   answer: 3
 }
 
@@ -28,38 +34,53 @@ function setCounterText() {
   countEl.textContent = count;
 }
 
-question1EL.addEventListener("click", function() {
-  count++;
-  setCounterText();
+function startimer() 
+{
+  timerEL.textContent = "start the Timer";
+}
 
-});
 
-question2EL.addEventListener("click", function() {
-  
-    count++;
-    checkanswer();
-    setCounterText();
 
-});
-question3EL.addEventListener("click", function() {
-  
+
+cardContentsEL.addEventListener("click", function(e) {
+  element=e.target;
+
+ 
+  });
+
+/*
+  let a = document.querySelectorAll(".btns");
+  console.log(a);
+   array.forEach(a => {
+     console.log(a.textContent)
+   });
+
+
+ 
   count++;
   checkanswer();
   setCounterText();
+*/
 
-});
-question4EL.addEventListener("click", function() {
+function createQuestion(indexQ) {
   
-  count++;
-  checkanswer();
-  setCounterText();
+  for (var i = 0; i < 3; i++) {
 
-});
+
+    let buttonA = document.createElement("button");
+    buttonA.setAttribute("class", "btnQuestion"); 
+    buttonA.textContent = "questions creted in for";
+    cardContentsEL.appendChild(buttonA);
+ 
+    }
+}
 
 
 startEL.addEventListener("click", function(e) {
   element=e.target;
- element.remove();
-    setCounterText();
+  element.remove();
 
+  startimer();
+  createQuestion();
+ 
 });
